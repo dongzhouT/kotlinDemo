@@ -8,10 +8,10 @@ import kotlin.math.cos
 import kotlin.math.sin
 
 private const val openAngle = 120
-private val DASH_WIDTH = 2f.px
-private val DASH_LENGTH = 10f.px
-private val RADIUS = 140f.px
-private val LENGTH = 120f.px
+private val DASH_WIDTH = 2f.dp
+private val DASH_LENGTH = 10f.dp
+private val RADIUS = 140f.dp
+private val LENGTH = 120f.dp
 private val index = 5
 private val num = 20
 
@@ -32,7 +32,7 @@ class DashBoardView(context: Context, attrs: AttributeSet) : View(context, attrs
     }
 
     init {
-        paint.strokeWidth = 3f.px;
+        paint.strokeWidth = 3f.dp;
         paint.style = Paint.Style.STROKE
         dash.addRect(0f, 0f, DASH_WIDTH, DASH_LENGTH, Path.Direction.CCW)
 //        paint.pathEffect=PathDashPathEffect.Style.ROTATE

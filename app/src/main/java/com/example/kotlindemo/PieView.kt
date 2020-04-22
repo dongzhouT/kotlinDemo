@@ -11,8 +11,8 @@ import kotlin.math.sin
 
 private val ANGLES = floatArrayOf(30f, 60f, 120f, 120f, 30f)
 private val COLORS = listOf<Int>(Color.RED, Color.DKGRAY, Color.GRAY, Color.BLUE, Color.YELLOW)
-private val RADIUS = 100f.px
-private val offset = 10f.px
+private val RADIUS = 100f.dp
+private val offset = 10f.dp
 private val selectedIndex = 3
 
 class PieView(context: Context?, attributeSet: AttributeSet?) : View(context, attributeSet) {

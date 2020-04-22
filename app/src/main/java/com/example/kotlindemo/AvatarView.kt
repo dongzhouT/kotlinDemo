@@ -5,8 +5,8 @@ import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
 
-private val IMAGE_WIDTH = 200f.px
-private val IMAGE_PADDING = 20f.px
+private val IMAGE_WIDTH = 200f.dp
+private val IMAGE_PADDING = 20f.dp
 
 class AvatarView(context: Context?, attributeSet: AttributeSet) : View(context, attributeSet) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
