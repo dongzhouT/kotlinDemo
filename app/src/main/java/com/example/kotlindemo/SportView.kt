@@ -5,6 +5,7 @@ import android.graphics.*
 import android.text.StaticLayout
 import android.util.AttributeSet
 import android.view.View
+import com.blankj.utilcode.util.GsonUtils
 
 private var RADIUS=100.dp
 private var LINE_WIDTH=20.dp
@@ -33,6 +34,11 @@ class SportView(context: Context?, attributeSet: AttributeSet?) : View(context, 
         paint.style=Paint.Style.FILL
         paint.textAlign=Paint.Align.CENTER
         canvas.drawText("aabb", width/2f, height/2f-(fontMetrics.descent+fontMetrics.ascent)/2, paint)
+        println("fontmetric====>${GsonUtils.toJson(fontMetrics)}")
+        var matrix:Matrix=Matrix()
+        matrix.postRotate(30f)
+        canvas.matrix=matrix
+
     }
 
 

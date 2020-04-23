@@ -21,10 +21,16 @@
 
     <com.example.kotlindemo.AvatarView
         android:layout_width="300dp"
-        android:layout_height="300dp" />
+        android:layout_height="300dp"
+        android:visibility="gone" />
 
     <com.example.kotlindemo.XfermodeView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:visibility="visible" />
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.CameraView
+        android:id="@+id/cameraView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

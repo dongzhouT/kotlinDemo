@@ -1,6 +1,8 @@
 package com.example.kotlindemo
 
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.util.TypedValue
 
 val Float.dp
