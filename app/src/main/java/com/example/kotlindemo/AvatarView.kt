@@ -14,6 +14,7 @@ class AvatarView(context: Context?, attributeSet: AttributeSet) : View(context, 
             IMAGE_PADDING + IMAGE_WIDTH)
 
     override fun onDraw(canvas: Canvas) {
+        setLayerType(LAYER_TYPE_HARDWARE,null)
         super.onDraw(canvas)
         val count = canvas.saveLayer(bounds, null)
         canvas.drawOval(bounds, paint)
