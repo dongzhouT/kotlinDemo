@@ -5,9 +5,14 @@ import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PointFEvaluator
 import android.app.Activity
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.PointF
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.animation.AnimationSet
+import androidx.core.graphics.drawable.toBitmap
 import com.example.kotlindemo.animator.ProvinceTypedValue
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -42,10 +47,12 @@ class DemoActivity : Activity() {
 //        animator.start()
 
         //provinceView
-        var animator = ObjectAnimator.ofObject(provinceView, "name",
-                ProvinceTypedValue(), "北京", "澳门特别行政区")
-        animator.startDelay = 1000
-        animator.duration = 4000
-        animator.start()
+//        var animator = ObjectAnimator.ofObject(provinceView, "name",
+//                ProvinceTypedValue(), "北京", "澳门特别行政区")
+//        animator.startDelay = 1000
+//        animator.duration = 4000
+//        animator.start()
+//        var drawable=ColorDrawable()
+//        drawable.toBitmap(10,10,Bitmap.Config.ARGB_8888)
     }
 }

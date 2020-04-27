@@ -8,7 +8,7 @@ import android.view.View
 import com.example.kotlindemo.dp
 
 class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs) {
-    private var radius = 100f.dp
+    var radius = 50f.dp
         set(value) {
             field = value
             invalidate()
