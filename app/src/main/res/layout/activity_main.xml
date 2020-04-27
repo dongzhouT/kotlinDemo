@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center_horizontal"
     android:orientation="vertical">
 
     <com.example.kotlindemo.DashBoardView
@@ -55,7 +54,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#30000000">
+        android:background="#30000000"
+        android:visibility="gone">
 
         <EditText
             android:layout_width="match_parent"
@@ -65,7 +65,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#30ff0000">
+        android:background="#30ff0000"
+        android:visibility="gone">
 
         <com.example.kotlindemo.view.MaterialEdittext
             android:id="@+id/met"
@@ -74,4 +75,28 @@
             android:hint="Username"
             app:useFloatingLabel="true" />
     </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <com.example.kotlindemo.layout.SquareImageView
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/duola" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent" />
+    </LinearLayout>
+
+    <com.example.kotlindemo.layout.CircleViewL
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:background="@color/colorPrimary" />
+
+
 </LinearLayout>
