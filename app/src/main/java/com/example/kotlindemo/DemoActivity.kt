@@ -1,20 +1,12 @@
 package com.example.kotlindemo
 
-import android.animation.Animator
-import android.animation.AnimatorSet
-import android.animation.ObjectAnimator
-import android.animation.PointFEvaluator
 import android.app.Activity
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.PointF
-import android.graphics.drawable.ColorDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.animation.AnimationSet
-import androidx.core.graphics.drawable.toBitmap
-import com.example.kotlindemo.animator.ProvinceTypedValue
+import android.view.ViewGroup
+import com.example.kotlindemo.animator.provinceName
+import com.example.kotlindemo.customLayout.ColoredTextView
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.layout_provinces.*
 
 class DemoActivity : Activity() {
 

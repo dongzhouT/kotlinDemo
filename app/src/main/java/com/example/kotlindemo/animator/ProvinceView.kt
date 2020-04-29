@@ -9,7 +9,8 @@ import android.util.TypedValue
 import android.view.View
 import com.example.kotlindemo.dp
 
-var provinceName = arrayListOf("北京",
+var provinceName = arrayListOf(
+        "北京",
         "天津",
         "河北省",
         "山西省",
