@@ -35,10 +35,6 @@ class SportView(context: Context?, attributeSet: AttributeSet?) : View(context, 
         paint.textAlign=Paint.Align.CENTER
         canvas.drawText("aabb", width/2f, height/2f-(fontMetrics.descent+fontMetrics.ascent)/2, paint)
         println("fontmetric====>${GsonUtils.toJson(fontMetrics)}")
-        var matrix:Matrix=Matrix()
-        matrix.postRotate(30f)
-        canvas.matrix=matrix
-
     }
 
 

@@ -100,6 +100,18 @@
         android:background="@color/colorPrimary"
         android:visibility="gone" />
 
-    <include layout="@layout/layout_provinces" />
+    <include
+        layout="@layout/layout_provinces"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.animator.ColorAnimView
+        android:id="@+id/colorView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.view.CanvasDemoView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

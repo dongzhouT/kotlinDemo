@@ -1,8 +1,13 @@
 package com.example.kotlindemo
 
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
 import android.app.Activity
+import android.graphics.Color
 import android.os.Bundle
+import android.os.Looper
 import android.view.ViewGroup
+import com.example.kotlindemo.animator.HSVEvaluator
 import com.example.kotlindemo.animator.provinceName
 import com.example.kotlindemo.customLayout.ColoredTextView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -46,5 +51,11 @@ class DemoActivity : Activity() {
 //        animator.start()
 //        var drawable=ColorDrawable()
 //        drawable.toBitmap(10,10,Bitmap.Config.ARGB_8888)
+        val objectAnim = ObjectAnimator.ofInt(colorView, "color", Color.RED, Color.GREEN)
+        objectAnim.startDelay = 2000
+        objectAnim.setEvaluator(HSVEvaluator())
+//        objectAnim.setEvaluator(ArgbEvaluator())
+        objectAnim.duration = 5000
+        objectAnim.start()
     }
 }

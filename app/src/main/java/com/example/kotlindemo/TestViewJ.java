@@ -32,4 +32,9 @@ public class TestViewJ extends View {
         super.onSizeChanged(w, h, oldw, oldh);
         path.addCircle(getWidth()/2f,getHeight()/2f,radius, Path.Direction.CW);
     }
+    public static void main(String[] args) {
+//        int a=0x12*5+0x6;
+        System.out.println("a=");
+    }
 }
+
