@@ -112,6 +112,11 @@
 
     <com.example.kotlindemo.view.CanvasDemoView
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.touch.ScalableImageView
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </LinearLayout>
