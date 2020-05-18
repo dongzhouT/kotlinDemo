@@ -122,6 +122,20 @@
 
     <com.example.kotlindemo.touch.ScalableImageView2
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
+    <com.example.kotlindemo.multiTouch.MultiTouchImageView1
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.multiTouch.MultiTouchImageView2
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.multiTouch.MultiTouchImageView3
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

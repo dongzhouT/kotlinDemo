@@ -11,6 +11,7 @@ import android.view.ScaleGestureDetector
 import android.view.View
 import android.widget.OverScroller
 import androidx.core.view.GestureDetectorCompat
+import androidx.core.view.ViewCompat
 import com.example.kotlindemo.R
 import com.example.kotlindemo.dp
 import com.example.kotlindemo.utils.getAvatar
@@ -135,14 +136,16 @@ class ScalableImageView2(context: Context, attrs: AttributeSet) : View(context, 
             return false
         }
 
-        override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+        override fun onFling(e1: MotionEvent, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
             //todo 用不用加上big判断，好像不用加也可以？
+            println("==onFling==e1:x=${e1.x},y=${e1.y};e2:x=${e2.x},y=${e2.y};velocityX=${velocityX},velocityY=${velocityY}")
             scroller.fling(offsetX.toInt(), offsetY.toInt(), velocityX.toInt(), velocityY.toInt(),
                     (-(bitmap.width * bigScale - width) / 2f).toInt(),
                     ((bitmap.width * bigScale - width) / 2f).toInt(),
                     (-(bitmap.height * bigScale - height) / 2f).toInt(),
                     ((bitmap.height * bigScale - height) / 2f).toInt())
-            postOnAnimation(flingRunner)
+            ViewCompat.postOnAnimation(this@ScalableImageView2, flingRunner)
+
             return false
         }
 
@@ -153,8 +156,9 @@ class ScalableImageView2(context: Context, attrs: AttributeSet) : View(context, 
             if (scroller.computeScrollOffset()) {
                 offsetX = scroller.currX.toFloat()
                 offsetY = scroller.currY.toFloat()
+                println("==onFling==:offsetX=${offsetX},offsetY=${offsetY},scale=${currentScale}")
                 invalidate()
-                postOnAnimation(flingRunner)
+                ViewCompat.postOnAnimation(this@ScalableImageView2, flingRunner)
             }
         }
 
@@ -179,7 +183,6 @@ class ScalableImageView2(context: Context, attrs: AttributeSet) : View(context, 
                 return false
             } else {
                 //todo 此处不用加invalidate()方法，是不是调用了setCurrentScale方法?
-//                this@ScalableImageView2.currentScale *= detector.scaleFactor
                 currentScale *= detector.scaleFactor
                 return true
             }
