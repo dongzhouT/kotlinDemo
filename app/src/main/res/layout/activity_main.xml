@@ -137,5 +137,21 @@
 
     <com.example.kotlindemo.multiTouch.MultiTouchImageView3
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.view.TwoPage
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ff0000" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#00ff00" />
+    </com.example.kotlindemo.view.TwoPage>
 </LinearLayout>
