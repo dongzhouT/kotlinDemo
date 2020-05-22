@@ -17,7 +17,8 @@ class DemoActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+//        setContentView(R.layout.activity_main)
+        setContentView(R.layout.layout_motion_start)
 //        val animator = ObjectAnimator.ofFloat(circleView, "radius", 150.dp)
 //        animator.startDelay = 1000
 //        animator.duration = 2000
