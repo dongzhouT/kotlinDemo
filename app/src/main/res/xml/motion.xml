@@ -3,11 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <Transition
         app:constraintSetEnd="@+id/end"
-        app:constraintSetStart="@+id/start"
-        app:pathMotionArc="startHorizontal">
+        app:constraintSetStart="@+id/start">
         <OnSwipe
             app:dragDirection="dragDown"
-            app:onTouchUp="stop"
             app:touchRegionId="@id/imageView" />
     </Transition>
     <ConstraintSet android:id="@+id/start" />
