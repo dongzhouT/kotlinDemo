@@ -50,11 +50,12 @@ public class WaitDemo implements TestDemo {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                initString();
+                printString();
+
             }
         };
 
@@ -62,17 +63,17 @@ public class WaitDemo implements TestDemo {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                printString();
+                initString();
             }
         };
         thread1.start();
         thread2.start();
         try {
-            thread2.join();
+            thread1.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
