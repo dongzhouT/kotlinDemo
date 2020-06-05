@@ -39,4 +39,9 @@ dependencies {
     implementation 'com.blankj:utilcodex:1.28.1'
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta5'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'io.reactivex.rxjava3:rxjava:3.0.4'
+    implementation 'io.reactivex.rxjava3:rxandroid:3.0.0'
+
+
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DemoListActivity"></activity>
+        <activity android:name=".rxjava3.RxjavaDemoActivity"></activity>
+        <activity android:name=".DemoListActivity" />
         <activity android:name=".motionLayout.MotionHencodeActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".DemoActivity">
