@@ -12,6 +12,7 @@ import com.example.kotlindemo.animator.provinceName
 import com.example.kotlindemo.customLayout.ColoredTextView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_provinces.*
+import kotlinx.coroutines.delay
 
 class DemoActivity : Activity() {
 

@@ -9,17 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".rxjava3.RxjavaDemoActivity"></activity>
-        <activity android:name=".DemoListActivity" />
-        <activity android:name=".motionLayout.MotionHencodeActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".DemoActivity">
+        <activity android:name=".WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".coroutine.CorountineDemoActivity">
+
+        </activity>
+        <activity android:name=".rxjava3.RxjavaDemoActivity" />
+        <activity android:name=".DemoListActivity" />
+        <activity android:name=".motionLayout.MotionHencodeActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".DemoActivity"></activity>
     </application>
 
 </manifest>

@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.example.kotlindemo.widget.CustomView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:visibility="gone" />
+
     <com.example.kotlindemo.DashBoardView
         android:layout_width="300dp"
         android:layout_height="300dp"
@@ -154,4 +159,5 @@
             android:layout_height="match_parent"
             android:background="#00ff00" />
     </com.example.kotlindemo.view.TwoPage>
+
 </LinearLayout>

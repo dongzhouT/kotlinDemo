@@ -2,6 +2,7 @@ package com.example.kotlindemo;
 
 import android.app.Activity;
 import android.app.IntentService;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.FileUtils;
@@ -17,7 +18,6 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
     }
 
     public static void main(String[] args) {
