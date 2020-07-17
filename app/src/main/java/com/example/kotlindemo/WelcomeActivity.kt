@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.example.kotlindemo.retrofit.RetrofitDemoActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -30,5 +31,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
             }
 
         }
+    }
+
+    fun onClickRetrofit(view: View) {
+        startActivity(Intent(this, RetrofitDemoActivity::class.java))
     }
 }

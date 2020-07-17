@@ -17,4 +17,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="demo2"/>
+    <Button
+        android:id="@+id/btn3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="demo3"/>
+    <Button
+        android:id="@+id/retrofitDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickRetrofit"
+        android:text="retrofitDemo"/>
 </LinearLayout>
