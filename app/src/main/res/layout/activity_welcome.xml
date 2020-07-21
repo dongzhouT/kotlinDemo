@@ -3,29 +3,40 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="20dp"
-    android:layout_height="match_parent"
     tools:context=".WelcomeActivity">
+
     <Button
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="demo1"/>
+        android:text="demo1" />
+
     <Button
         android:id="@+id/btn2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="demo2"/>
+        android:text="demo2" />
+
     <Button
         android:id="@+id/btn3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="demo3"/>
+        android:text="demo3" />
+
     <Button
         android:id="@+id/retrofitDemo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onClickRetrofit"
-        android:text="retrofitDemo"/>
+        android:text="retrofitDemo" />
+
+    <Button
+        android:id="@+id/okhttpDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickOkhttp"
+        android:text="okhttpDemo" />
 </LinearLayout>
