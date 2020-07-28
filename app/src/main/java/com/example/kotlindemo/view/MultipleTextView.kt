@@ -1,4 +1,4 @@
-package com.example.kotlindemo
+package com.example.kotlindemo.view
 
 import android.content.Context
 import android.graphics.*
@@ -7,6 +7,8 @@ import android.text.StaticLayout
 import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
+import com.example.kotlindemo.R
+import com.example.kotlindemo.dp
 
 private val IMAGE_SIZE = 150.dp
 private val IMAGE_PADDING = 50.dp

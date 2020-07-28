@@ -1,6 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion 29
 //    buildToolsVersion '28.0.3'
@@ -24,6 +25,9 @@ android {
     compileOptions {
         sourceCompatibility = 1.8
         targetCompatibility = 1.8
+    }
+    dataBinding {
+        enabled = true
     }
 //    flavorDimensions "pro"
 //    productFlavors {
@@ -74,4 +78,5 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 //    implementation 'com.google.android.material:material:1.2.0-alpha06'
 //    compileOnly 'com.android.tools.build:gradle:3.6.2'
+    kapt 'com.android.databinding:compiler:2.3.3'
 }

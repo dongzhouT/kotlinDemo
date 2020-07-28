@@ -11,23 +11,23 @@
         android:layout_height="100dp"
         android:visibility="gone" />
 
-    <com.example.kotlindemo.DashBoardView
+    <com.example.kotlindemo.view.DashBoardView
         android:layout_width="300dp"
         android:layout_height="300dp"
-        android:visibility="gone"></com.example.kotlindemo.DashBoardView>
+        android:visibility="gone"></com.example.kotlindemo.view.DashBoardView>
 
-    <com.example.kotlindemo.PieView
+    <com.example.kotlindemo.view.PieView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginTop="20dp"
         android:visibility="gone" />
 
-    <com.example.kotlindemo.AvatarView
+    <com.example.kotlindemo.view.AvatarView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:visibility="gone" />
 
-    <com.example.kotlindemo.XfermodeView
+    <com.example.kotlindemo.view.XfermodeView
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:visibility="gone" />

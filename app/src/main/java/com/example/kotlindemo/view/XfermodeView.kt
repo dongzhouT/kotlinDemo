@@ -1,9 +1,10 @@
-package com.example.kotlindemo
+package com.example.kotlindemo.view
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
+import com.example.kotlindemo.dp
 
 private val IMG_WIDTH = 150f.dp
 private val xfmode = PorterDuffXfermode(PorterDuff.Mode.DST_OVER)

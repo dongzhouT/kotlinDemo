@@ -39,4 +39,16 @@
         android:layout_height="wrap_content"
         android:onClick="onClickOkhttp"
         android:text="okhttpDemo" />
+    <Button
+        android:id="@+id/textDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickTextDemo"
+        android:text="textDemo" />
+    <Button
+        android:id="@+id/animDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickAnimDemo"
+        android:text="AnimDemo" />
 </LinearLayout>

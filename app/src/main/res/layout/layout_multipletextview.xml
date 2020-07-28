@@ -4,11 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.example.kotlindemo.SportView
+    <com.example.kotlindemo.view.SportView
         android:layout_width="match_parent"
         android:layout_height="300dp" />
 
-    <com.example.kotlindemo.MultipleTextView
+    <com.example.kotlindemo.view.MultipleTextView
         android:layout_width="match_parent"
         android:layout_height="300dp" />
 

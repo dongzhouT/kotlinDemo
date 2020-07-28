@@ -61,6 +61,7 @@ class OkhttpDemoActivity : AppCompatActivity() {
             }
         })
         thread {
+//            TODO()
             println("Resolved address:${InetAddress.getAllByName("hencoder.com")[0]}")
         }
 

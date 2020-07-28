@@ -1,7 +1,9 @@
 package com.example.kotlindemo
 
 import android.animation.ArgbEvaluator
+import android.animation.Keyframe
 import android.animation.ObjectAnimator
+import android.animation.PropertyValuesHolder
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
@@ -22,7 +24,7 @@ class DemoActivity : Activity() {
 //        setContentView(R.layout.layout_motion_start)
 //        setContentView(R.layout.layout_sample_contraint)
 //        setContentView(R.layout.layout_motion_image)
-        setContentView(R.layout.layout_motion_hen)
+//        setContentView(R.layout.layout_motion_hen)
 //        val animator = ObjectAnimator.ofFloat(circleView, "radius", 150.dp)
 //        animator.startDelay = 1000
 //        animator.duration = 2000
@@ -41,6 +43,7 @@ class DemoActivity : Activity() {
         var set=AnimatorSet()
         set.playSequentially(bottomFlipanimator,flipRotationanimator,topFlipanimator)
         set.start()*/
+        //keyframe
 
         //pointView animatior
 //        var animator = ObjectAnimator.ofObject(pointView, "point", PointFEvaluator(), PointF(200.dp, 200.dp))

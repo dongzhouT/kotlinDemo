@@ -13,6 +13,9 @@ class CircleView(context: Context?, attrs: AttributeSet?) : View(context, attrs)
             field = value
             invalidate()
         }
+    init {
+        setLayerType(LAYER_TYPE_HARDWARE,null)
+    }
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
