@@ -14,7 +14,10 @@ class CircleViewL(context: Context?, attrs: AttributeSet?) : View(context, attrs
     val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         val size = ((PADDING + RADIUS) / 2).toInt()
+        val widthMode = MeasureSpec.getMode(widthMeasureSpec)
+        val widthSize = MeasureSpec.getSize(widthMeasureSpec)
         var width = resolveSize(size, widthMeasureSpec)
+//        resolveSizeAndState()
         var height = resolveSize(size, heightMeasureSpec)
         setMeasuredDimension(width, height)
     }
