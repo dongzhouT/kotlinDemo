@@ -4,8 +4,10 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import androidx.core.view.postDelayed
 import com.example.kotlindemo.R
 import com.example.kotlindemo.log
+import kotlinx.android.synthetic.main.activity_drawable_demo.*
 
 class DrawableDemoActivity : Activity() {
     private val mHandler = object : Handler() {
@@ -36,8 +38,12 @@ class DrawableDemoActivity : Activity() {
         mHandler2.sendEmptyMessage(1)
         mHandler2.sendEmptyMessageDelayed(2, 2000)
         mHandler2.sendEmptyMessage(3)
+        met.postDelayed(3000) {
+            met.useFloatingLabel = false
+        }
     }
 }
-fun main(){
+
+fun main() {
     println("1111222")
 }
