@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.kotlindemo.animator.AnimDemoActivity
+import com.example.kotlindemo.drawable.DrawableDemoActivity
+import com.example.kotlindemo.drawable.HandleActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
 import com.example.kotlindemo.view.TextViewDemoActivity
@@ -50,5 +52,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickAnimDemo(view: View) {
         startActivity(Intent(this, AnimDemoActivity::class.java))
+    }
+
+    fun onClickDrawableDemo(view: View) {
+        startActivity(Intent(this, DrawableDemoActivity::class.java))
     }
 }

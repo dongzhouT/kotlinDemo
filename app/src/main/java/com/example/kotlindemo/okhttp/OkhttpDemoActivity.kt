@@ -1,6 +1,7 @@
 package com.example.kotlindemo.okhttp
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kotlindemo.R
@@ -36,6 +37,7 @@ class OkhttpDemoActivity : AppCompatActivity() {
     public var aa = 0
     internal var bb = 0
 
+    var handler:Handler=Handler()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_okhttp_demo)

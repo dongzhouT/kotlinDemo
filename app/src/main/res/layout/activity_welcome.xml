@@ -51,4 +51,10 @@
         android:layout_height="wrap_content"
         android:onClick="onClickAnimDemo"
         android:text="AnimDemo" />
+    <Button
+        android:id="@+id/drawableDemo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onClickDrawableDemo"
+        android:text="DrawableDemo" />
 </LinearLayout>
