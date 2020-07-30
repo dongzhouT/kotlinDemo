@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".customLayout.TagLayoutDemoActivity"></activity>
+        <activity android:name=".recyclerview.RecyclerviewDemoActivity"></activity>
+        <activity android:name=".customLayout.TagLayoutDemoActivity" />
         <activity android:name=".drawable.HandleActivity" />
         <activity android:name=".drawable.DrawableDemoActivity" />
         <activity android:name=".animator.AnimDemoActivity" />

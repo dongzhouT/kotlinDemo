@@ -9,6 +9,7 @@ import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
 import com.example.kotlindemo.drawable.HandleActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
+import com.example.kotlindemo.recyclerview.RecyclerviewDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
 import com.example.kotlindemo.view.TextViewDemoActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
@@ -61,5 +62,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickTagDemo(view: View) {
         startActivity(Intent(this, TagLayoutDemoActivity::class.java))
+    }
+
+    fun onClickRv(view: View) {
+        startActivity(Intent(this, RecyclerviewDemoActivity::class.java))
     }
 }
