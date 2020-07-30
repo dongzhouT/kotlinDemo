@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.view.ViewTreeObserver
 import androidx.core.view.postDelayed
 import com.example.kotlindemo.R
 import com.example.kotlindemo.log
@@ -25,6 +26,8 @@ class DrawableDemoActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        requestWindowFeature()
+//        window.setFlags()
         setContentView(R.layout.activity_drawable_demo)
         //bitmap和drawable互转操作
 //        var bitmap=Bitmap.createBitmap(50.dp.toInt(), 50.dp.toInt(),Bitmap.Config.ARGB_8888)

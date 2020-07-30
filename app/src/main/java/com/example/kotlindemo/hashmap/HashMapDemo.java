@@ -5,6 +5,7 @@ import com.example.kotlindemo.generic.AppleShop;
 import com.google.gson.Gson;
 
 import java.util.HashMap;
+import java.util.Hashtable;
 
 public class HashMapDemo {
     public static void main(String[] args) {
@@ -15,5 +16,8 @@ public class HashMapDemo {
         System.out.println(GsonUtils.toJson(aa));
         //
         Integer.highestOneBit(15);
+        Hashtable<String, String> table = new Hashtable<>();
+        table.put("key", "value");
+        //HashMap Hashtable的区别
     }
 }

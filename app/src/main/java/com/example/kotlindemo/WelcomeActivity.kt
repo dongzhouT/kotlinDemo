@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.kotlindemo.animator.AnimDemoActivity
+import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
 import com.example.kotlindemo.drawable.HandleActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
@@ -56,5 +57,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickDrawableDemo(view: View) {
         startActivity(Intent(this, DrawableDemoActivity::class.java))
+    }
+
+    fun onClickTagDemo(view: View) {
+        startActivity(Intent(this, TagLayoutDemoActivity::class.java))
     }
 }

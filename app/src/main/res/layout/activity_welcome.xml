@@ -1,60 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="20dp"
-    tools:context=".WelcomeActivity">
+    android:layout_height="match_parent">
 
-    <Button
-        android:id="@+id/btn1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="demo1" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:context=".WelcomeActivity">
 
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="demo2" />
+        <Button
+            android:id="@+id/btn1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="demo1" />
 
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="demo3" />
+        <Button
+            android:id="@+id/btn2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="demo2" />
 
-    <Button
-        android:id="@+id/retrofitDemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickRetrofit"
-        android:text="retrofitDemo" />
+        <Button
+            android:id="@+id/btn3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="demo3" />
 
-    <Button
-        android:id="@+id/okhttpDemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickOkhttp"
-        android:text="okhttpDemo" />
-    <Button
-        android:id="@+id/textDemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickTextDemo"
-        android:text="textDemo" />
-    <Button
-        android:id="@+id/animDemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickAnimDemo"
-        android:text="AnimDemo" />
-    <Button
-        android:id="@+id/drawableDemo"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="onClickDrawableDemo"
-        android:text="DrawableDemo" />
-</LinearLayout>
+        <Button
+            android:id="@+id/retrofitDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickRetrofit"
+            android:text="retrofitDemo" />
+
+        <Button
+            android:id="@+id/okhttpDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickOkhttp"
+            android:text="okhttpDemo" />
+
+        <Button
+            android:id="@+id/textDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickTextDemo"
+            android:text="textDemo" />
+
+        <Button
+            android:id="@+id/animDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickAnimDemo"
+            android:text="AnimDemo" />
+
+        <Button
+            android:id="@+id/drawableDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickDrawableDemo"
+            android:text="DrawableDemo" />
+        <Button
+            android:id="@+id/TagLayoutDemo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickTagDemo"
+            android:text="TagLayoutDemo" />
+    </LinearLayout>
+</ScrollView>
