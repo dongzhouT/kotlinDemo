@@ -75,5 +75,10 @@
             android:layout_height="wrap_content"
             android:onClick="onClickRv"
             android:text="RecyclerViewDemoKT" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickHandler"
+            android:text="HandlerDemo" />
     </LinearLayout>
 </ScrollView>

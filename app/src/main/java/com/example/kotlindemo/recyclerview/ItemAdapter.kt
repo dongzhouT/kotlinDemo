@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.layout_item.view.*
  */
 class ItemAdapter(var dataList: List<String>) : RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-        var root = LayoutInflater.from(parent.context).inflate(R.layout.layout_item, null)
+        var root = LayoutInflater.from(parent.context).inflate(R.layout.layout_item, parent, false)
         return MyViewHolder(root)
     }
 

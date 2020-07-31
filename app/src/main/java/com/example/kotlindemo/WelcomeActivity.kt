@@ -8,6 +8,7 @@ import com.example.kotlindemo.animator.AnimDemoActivity
 import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
 import com.example.kotlindemo.drawable.HandleActivity
+import com.example.kotlindemo.handler.HandlerDemoActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
 import com.example.kotlindemo.recyclerview.RecyclerviewDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
@@ -66,5 +67,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickRv(view: View) {
         startActivity(Intent(this, RecyclerviewDemoActivity::class.java))
+    }
+
+    fun onClickHandler(view: View) {
+        startActivity(Intent(this, HandlerDemoActivity::class.java))
     }
 }
