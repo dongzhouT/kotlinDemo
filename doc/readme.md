@@ -52,3 +52,29 @@ CallServerInterceptor 去请求与相应的I/O操作，发请求读响应
  * addView()中调用了setView()->ViewRootImpl.performTraversals,执行decorView的measure，layout,draw方法
 
 *DecorView的parent是 `viewRootImpl`,`viewRootImpl`中checkThread()会判断操作UI是否是主线程([mThread]!=Thread.currentThread())*
+
+# view触摸反馈原理
+**View**
+dispatchTouchEvent
+onTouchEvent
+```
+public boolean dispatchTouchEvent(MotionEvent event) {
+    return onTouchEvent(event)
+}
+```
+**viewGroup**
+dispatchTouchEvent
+onInterceptTouchEvent(viewGroup特有方法)
+onTouchEvent
+```
+public boolean dispatchTouchEvent(MotionEvent event) {
+    boolean result;
+    if(interceptTouchEvent()){
+        result=onTouchEvent();super.dispatchTouchEvent
+    }else{
+        result=子view的dispatchTouchEvent;
+    }
+    return result;
+}
+```
+

@@ -12,6 +12,7 @@ import com.example.kotlindemo.handler.HandlerDemoActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
 import com.example.kotlindemo.recyclerview.RecyclerviewDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
+import com.example.kotlindemo.touch.TouchDemoActivity
 import com.example.kotlindemo.view.TextViewDemoActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
@@ -71,5 +72,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickHandler(view: View) {
         startActivity(Intent(this, HandlerDemoActivity::class.java))
+    }
+
+    fun onClickTouch(view: View) {
+        startActivity(Intent(this, TouchDemoActivity::class.java))
     }
 }

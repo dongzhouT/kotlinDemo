@@ -80,5 +80,10 @@
             android:layout_height="wrap_content"
             android:onClick="onClickHandler"
             android:text="HandlerDemo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickTouch"
+            android:text="TouchDemo" />
     </LinearLayout>
 </ScrollView>
