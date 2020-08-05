@@ -42,6 +42,7 @@ class MultiTouchImageView3(context: Context, attrs: AttributeSet?) : View(contex
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
                 var path = pathPool.acquire() ?: Path()
+                println("$tag new path=${path.toString()}")
                 path.reset()
 //                var path = Path()
                 val actionIndex = event.actionIndex
