@@ -13,6 +13,7 @@ import com.example.kotlindemo.okhttp.OkhttpDemoActivity
 import com.example.kotlindemo.recyclerview.RecyclerviewDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
 import com.example.kotlindemo.touch.TouchDemoActivity
+import com.example.kotlindemo.touch.TwoPagerDemoActivity
 import com.example.kotlindemo.view.TextViewDemoActivity
 import kotlinx.android.synthetic.main.activity_welcome.*
 
@@ -22,7 +23,7 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         btn1.setOnClickListener(this)
-        btn2.setOnClickListener(this)
+//        btn2.setOnClickListener(this)
 
     }
 
@@ -33,11 +34,11 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
                 intent.setClass(WelcomeActivity@ this, DemoActivity::class.java)
                 startActivity(intent)
             }
-            R.id.btn2 -> {
-                var intent = Intent()
-                intent.setClass(WelcomeActivity@ this, MainActivity::class.java)
-                startActivity(intent)
-            }
+//            R.id.btn2 -> {
+//                var intent = Intent()
+//                intent.setClass(WelcomeActivity@ this, MainActivity::class.java)
+//                startActivity(intent)
+//            }
 
         }
     }
@@ -76,5 +77,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickTouch(view: View) {
         startActivity(Intent(this, TouchDemoActivity::class.java))
+    }
+
+    fun onClickTwoPager(view: View) {
+        startActivity(Intent(this, TwoPagerDemoActivity::class.java))
     }
 }

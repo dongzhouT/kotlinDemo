@@ -145,7 +145,7 @@
         android:layout_height="match_parent"
         android:visibility="gone" />
 
-    <com.example.kotlindemo.view.TwoPage
+    <com.example.kotlindemo.touch.TwoPage
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -158,6 +158,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#00ff00" />
-    </com.example.kotlindemo.view.TwoPage>
+    </com.example.kotlindemo.touch.TwoPage>
 
 </LinearLayout>

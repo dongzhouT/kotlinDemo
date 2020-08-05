@@ -1,4 +1,4 @@
-package com.example.kotlindemo.view
+package com.example.kotlindemo.touch
 
 import android.content.Context
 import android.util.AttributeSet
@@ -10,29 +10,26 @@ import android.widget.OverScroller
 import androidx.core.view.children
 import kotlin.math.abs
 
-/**
- * 实现一个只包含两页的简单的viewPager
- */
-class TwoPage(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attrs) {
-    var downX = 0f
-    var downY = 0f
-    var downScrollX = 0
-    var scrolling = false
-    var viewConfiguration = ViewConfiguration.get(context)
-    var maxVelocity = viewConfiguration.scaledMaximumFlingVelocity
-    var minVelocity = viewConfiguration.scaledMinimumFlingVelocity
-    var pagingSlop = viewConfiguration.scaledPagingTouchSlop
-    var velocityTracker = VelocityTracker.obtain()
-    var scroller = OverScroller(context)
+class TwoPager2(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attrs) {
+    val viewConfiguration = ViewConfiguration.get(context)
+    private val velocityTracker = VelocityTracker.obtain()
+    private val minSlop = viewConfiguration.scaledPagingTouchSlop
+    private val minVelocity = viewConfiguration.scaledMinimumFlingVelocity
+    private val maxVelocity = viewConfiguration.scaledMaximumFlingVelocity
+    private val overscroller = OverScroller(context)
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         measureChildren(widthMeasureSpec, heightMeasureSpec)
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
     }
 
+    private var originalX = 0
+    private var downX = 0f
+    private var downY = 0f
+    private var scrolling = false
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         var childLeft = 0
-        var childTop = 0
         var childRight = width
+        var childTop = 0
         var childBottom = height
         for (child in children) {
             child.layout(childLeft, childTop, childRight, childBottom)
@@ -45,27 +42,28 @@ class TwoPage(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attr
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             velocityTracker.clear()
         }
-        println("TwoPage== onInterceptTouchEvent=${event.actionMasked}")
-        velocityTracker.addMovement(event)
         var result = false
+        velocityTracker.addMovement(event)
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
-                scrolling = false
-                downScrollX = scrollX
                 downX = event.x
                 downY = event.y
+                originalX = scrollX
+                result = false
+                scrolling = false
             }
             MotionEvent.ACTION_MOVE -> {
                 if (!scrolling) {
                     var dx = downX - event.x
-                    if (abs(dx) > pagingSlop) {
+                    if (abs(dx) > minSlop) {
                         scrolling = true
                         result = true
-                        parent.requestDisallowInterceptTouchEvent(true)
+//                        parent.requestDisallowInterceptTouchEvent(true)
                     }
                 }
             }
         }
+
         return result
     }
 
@@ -73,17 +71,15 @@ class TwoPage(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attr
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             velocityTracker.clear()
         }
-        println("TwoPage== onTouchEvent=${event.actionMasked}")
         velocityTracker.addMovement(event)
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN -> {
-                downScrollX = scrollX
                 downX = event.x
                 downY = event.y
+                originalX = scrollX
             }
             MotionEvent.ACTION_MOVE -> {
-                println("scroll===${scrollX}")
-                var dx = (downX - event.x + downScrollX).toInt()
+                var dx = (downX - event.x + originalX).toInt()
                         .coerceAtLeast(0)
                         .coerceAtMost(width)
                 scrollTo(dx, 0)
@@ -91,24 +87,30 @@ class TwoPage(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attr
             MotionEvent.ACTION_UP -> {
                 velocityTracker.computeCurrentVelocity(1000, maxVelocity.toFloat())
                 var vx = velocityTracker.xVelocity
-                var scrollX = scrollX
-                println("vx=${vx},minV=${minVelocity},maxV=${maxVelocity}")
+                val scrollX = scrollX
+                println("vx=${vx},scrollx=$scrollX")
                 var targetPage = if (abs(vx) < minVelocity) {
+                    //超过一半，显示第二屏
                     if (scrollX > width / 2) 1 else 0
                 } else {
+                    //注意边界判断
                     if (vx < 0) 1 else 0
                 }
                 var scrollDistance = if (targetPage == 1) width - scrollX else -scrollX
-                scroller.startScroll(scrollX, 0, scrollDistance, 0)
+                overscroller.startScroll(scrollX, 0, scrollDistance, 0)
                 postInvalidateOnAnimation()
             }
         }
         return true
     }
 
+    /**
+     * 利用系统的回调方法
+     */
     override fun computeScroll() {
-        if (scroller.computeScrollOffset()) {
-            scrollTo(scroller.currX, 0)
+        //没有完成返回true
+        if (overscroller.computeScrollOffset()) {
+            scrollTo(overscroller.currX, overscroller.currY)
             postInvalidateOnAnimation()
         }
     }

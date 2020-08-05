@@ -110,5 +110,14 @@ MotionEvent.ACTION_POINTER_UP
 MotionEvent.ACTION_MOVE
 MotionEvent.ACTION_UP
 ```
-
-
+# viewPager
+## VelocityTracker
+* 声明 private val velocityTracker = VelocityTracker.obtain()
+* ACTION_DOWN的时候velocityTracker.clear()
+* 每次onTouchEvent调用velocityTracker.addMovement(event)
+* ACTION_UP的时候调用velocityTracker.computeCurrentVelocity(1000, maxVelocity.toFloat()),获得xVelocity
+## overscroller
+* 声明 OverScroller(context)
+* 用于计算overscroller.startScroll(scrollX, 0, scrollDistance, 0)
+* 判断计算有没有结束 overscroller.computeScrollOffset()，true:没有结束
+* 获取当前值 scrollTo(overscroller.currX, overscroller.currY)
