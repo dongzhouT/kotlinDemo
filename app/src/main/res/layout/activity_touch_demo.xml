@@ -10,8 +10,15 @@
     <com.example.kotlindemo.touch.TouchView
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:background="@color/colorAccent"
-        android:clickable="true"
-        android:focusable="true" />
+        android:background="@color/colorAccent"/>
+
+    <com.example.kotlindemo.touch.MultiTouchView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <com.example.kotlindemo.multiTouch.MultiTouchImageView1
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

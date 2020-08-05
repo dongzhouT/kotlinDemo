@@ -55,9 +55,11 @@ class ScalableImageView2(context: Context, attrs: AttributeSet) : View(context, 
             invalidate()
         }
     //step3
-    private var scaleAnimator = ObjectAnimator.ofFloat(this, "currentScale",
+    private val scaleAnimator by lazy {
+   ObjectAnimator.ofFloat(this, "currentScale",
             smallScale, bigScale)
-    //step7
+    }
+            //step7
     private val flingRunner = FlingRunner()
     //step8
     private val scaleGestureListener = TaoScaleGestureListener()
@@ -183,6 +185,7 @@ class ScalableImageView2(context: Context, attrs: AttributeSet) : View(context, 
                 return false
             } else {
                 //todo 此处不用加invalidate()方法，是不是调用了setCurrentScale方法?
+                //是的
                 currentScale *= detector.scaleFactor
                 return true
             }

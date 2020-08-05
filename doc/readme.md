@@ -54,6 +54,8 @@ CallServerInterceptor 去请求与相应的I/O操作，发请求读响应
 *DecorView的parent是 `viewRootImpl`,`viewRootImpl`中checkThread()会判断操作UI是否是主线程([mThread]!=Thread.currentThread())*
 
 # view触摸反馈原理
+event.action不支持多点
+event.actionMasked支持多点触控
 **View**
 dispatchTouchEvent
 onTouchEvent
@@ -77,4 +79,36 @@ public boolean dispatchTouchEvent(MotionEvent event) {
     return result;
 }
 ```
+# 触摸反馈工具
+*GestureDetectorCompat 处理双击
+*overScroller 处理惯性滑动
+*ScaleGestureDetector 处理双指缩放
+# 多点触控 event:MotionEvent
+`override fun onTouchEvent(event: MotionEvent): Boolean`
+**event.actionMasked**
+简化数据结构 point(x,y,index,id)
+index 用于遍历手指
+id 用于追踪某个手指
+* event.pointerCount 手指总数 >=1
+* event.getPointerId(index) 获得index
+* event.findPointerIndex(id) 获得id
+* event.getX(index) 获得某个手指的坐标
+* event.actionIndex 引起ACTION_POINTER_DOWN和ACTION_POINTER_UP发生的那个手指的index
+-当发生ACTION_POINTER_UP,pointerCount不会变化, ACTION_POINTER_DOWN会导致pointerCount+1
+## touch事件发生序列
+```
+MotionEvent.ACTION_DOWN point(x,y,index,id)
+MotionEvent.ACTION_MOVE point(x,y,index,id)
+MotionEvent.ACTION_MOVE point(x,y,index,id)
+MotionEvent.ACTION_POINTER_DOWN point(x,y,index,id) point(x,y,index,id)
+MotionEvent.ACTION_MOVE
+MotionEvent.ACTION_POINTER_DOWN
+MotionEvent.ACTION_MOVE
+MotionEvent.ACTION_POINTER_UP
+MotionEvent.ACTION_MOVE
+MotionEvent.ACTION_POINTER_UP
+MotionEvent.ACTION_MOVE
+MotionEvent.ACTION_UP
+```
+
 

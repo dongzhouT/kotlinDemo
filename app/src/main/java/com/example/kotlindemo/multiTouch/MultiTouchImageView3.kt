@@ -13,7 +13,7 @@ import com.example.kotlindemo.dp
 import com.example.kotlindemo.utils.getAvatar
 
 /**
- * 合作型多点触控
+ * 互不干扰型多点触控 画板程序
  */
 class MultiTouchImageView3(context: Context, attrs: AttributeSet?) : View(context, attrs) {
     var tag = "==MultiTouchImageView3=="
