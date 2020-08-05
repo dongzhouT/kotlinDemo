@@ -8,6 +8,7 @@ import android.util.AttributeSet
 import android.util.SparseArray
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.util.Pools
 import androidx.core.util.keyIterator
 import com.example.kotlindemo.dp
 import com.example.kotlindemo.utils.getAvatar
@@ -21,6 +22,7 @@ class MultiTouchImageView3(context: Context, attrs: AttributeSet?) : View(contex
 
     }
     var paths = SparseArray<Path>()
+    var pathPool = Pools.SimplePool<Path>(5)
 
     init {
         paint.style = Paint.Style.STROKE
@@ -39,7 +41,9 @@ class MultiTouchImageView3(context: Context, attrs: AttributeSet?) : View(contex
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.actionMasked) {
             MotionEvent.ACTION_DOWN, MotionEvent.ACTION_POINTER_DOWN -> {
-                val path = Path()
+                var path = pathPool.acquire() ?: Path()
+                path.reset()
+//                var path = Path()
                 val actionIndex = event.actionIndex
                 path.moveTo(event.getX(actionIndex), event.getY(actionIndex))
                 paths.append(event.getPointerId(actionIndex), path)
@@ -49,6 +53,7 @@ class MultiTouchImageView3(context: Context, attrs: AttributeSet?) : View(contex
                 val actionIndex = event.actionIndex
                 val pointerId = event.getPointerId(actionIndex)
                 println("${tag},${event.actionMasked},event.actionIdex=${event.actionIndex},pointerId=${pointerId}")
+                pathPool.release(paths.get(pointerId))
                 paths.remove(pointerId)
                 invalidate()
             }

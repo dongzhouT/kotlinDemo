@@ -121,3 +121,14 @@ MotionEvent.ACTION_UP
 * 用于计算overscroller.startScroll(scrollX, 0, scrollDistance, 0)
 * 判断计算有没有结束 overscroller.computeScrollOffset()，true:没有结束
 * 获取当前值 scrollTo(overscroller.currX, overscroller.currY)
+```
+父view的 on InterceptTouchEvent+ACTION_DOWN
+子view的  ACTION_DOWN,actionIdex=0,pointCount=1,0
+父view的 on InterceptTouchEvent+ACTION_MOVE
+子view的  ACTION_MOVE,actionIdex=0,pointCount=1,0
+...
+子view的  ACTION_CANCEL,actionIdex=0,pointCount=1,0
+父view的 onTouchEvent+ACTION_MOVE
+...
+父view的 onTouchEvent+ACTION_UP
+```

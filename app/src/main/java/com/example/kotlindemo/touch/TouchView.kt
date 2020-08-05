@@ -12,14 +12,17 @@ import androidx.appcompat.widget.AppCompatTextView
  * event.actionMasked return true等同于event.actionMasked==MotionEvent.ACTION_DOWN 返回值只有在down事件中有意义
  */
 class TouchView(context: Context?, attrs: AttributeSet?) : AppCompatButton(context, attrs) {
-    private val TAG = "==TouchView=="
+    companion object {
+        const val TAG = "==TouchView=="
+    }
+
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        if (event.actionMasked != MotionEvent.ACTION_MOVE) {
+//        if (event.actionMasked != MotionEvent.ACTION_MOVE) {
 //            println(TAG + event.toString())
-            println("$TAG+${MotionEvent.actionToString(event.actionMasked)}," +
+            println("$TAG++${MotionEvent.actionToString(event.actionMasked)}," +
                     "actionIdex=${event.actionIndex},pointCount=${event.pointerCount}," +
                     "${event.getPointerId(0)}")
-        }
+//        }
 //        when (event.actionMasked) {
 //            MotionEvent.ACTION_DOWN -> {
 //                println("${TAG}:MotionEvent.ACTION_DOWN,${event.actionIndex}/${event.pointerCount}")

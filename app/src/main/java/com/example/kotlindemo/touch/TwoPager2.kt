@@ -8,6 +8,7 @@ import android.view.ViewConfiguration
 import android.view.ViewGroup
 import android.widget.OverScroller
 import androidx.core.view.children
+import com.example.kotlindemo.touch.TouchView.Companion.TAG
 import kotlin.math.abs
 
 class TwoPager2(context: Context?, attrs: AttributeSet?) : ViewGroup(context, attrs) {
@@ -39,6 +40,9 @@ class TwoPager2(context: Context?, attrs: AttributeSet?) : ViewGroup(context, at
     }
 
     override fun onInterceptTouchEvent(event: MotionEvent): Boolean {
+//        if (event.actionMasked != MotionEvent.ACTION_MOVE) {
+            println("${TAG}  onInterceptTouchEvent+${MotionEvent.actionToString(event.actionMasked)}")
+//        }
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             velocityTracker.clear()
         }
@@ -68,6 +72,9 @@ class TwoPager2(context: Context?, attrs: AttributeSet?) : ViewGroup(context, at
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
+//        if (event.actionMasked != MotionEvent.ACTION_MOVE) {
+            println("$TAG onTouchEvent+${MotionEvent.actionToString(event.actionMasked)}")
+//        }
         if (event.actionMasked == MotionEvent.ACTION_DOWN) {
             velocityTracker.clear()
         }

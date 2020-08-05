@@ -9,12 +9,14 @@ import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
 import com.example.kotlindemo.drawable.HandleActivity
 import com.example.kotlindemo.handler.HandlerDemoActivity
+import com.example.kotlindemo.multiTouch.MultiTouchDemoActivity
 import com.example.kotlindemo.okhttp.OkhttpDemoActivity
 import com.example.kotlindemo.recyclerview.RecyclerviewDemoActivity
 import com.example.kotlindemo.retrofit.RetrofitDemoActivity
 import com.example.kotlindemo.touch.TouchDemoActivity
 import com.example.kotlindemo.touch.TwoPagerDemoActivity
 import com.example.kotlindemo.view.TextViewDemoActivity
+import kotlinx.android.synthetic.main.activity_text_view_demo.*
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
@@ -81,5 +83,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickTwoPager(view: View) {
         startActivity(Intent(this, TwoPagerDemoActivity::class.java))
+    }
+
+    fun onClickMultiTouch(view: View) {
+        startActivity(Intent(this, MultiTouchDemoActivity::class.java))
     }
 }

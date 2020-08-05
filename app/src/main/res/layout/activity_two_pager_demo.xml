@@ -5,13 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".touch.TwoPagerDemoActivity">
-    <View
+
+    <com.example.kotlindemo.touch.TouchView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorAccent"/>
-    <View
+        android:background="@color/colorAccent" />
+
+    <com.example.kotlindemo.touch.TouchView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimaryDark"/>
+        android:background="@color/colorPrimaryDark" />
 
 </com.example.kotlindemo.touch.TwoPager2>
