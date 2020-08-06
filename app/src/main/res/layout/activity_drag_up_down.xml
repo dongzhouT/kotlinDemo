@@ -16,7 +16,10 @@
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:background="@color/colorAccent"
+        android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.5"
         app:layout_constraintTop_toTopOf="parent" />
 
 </com.example.kotlindemo.drag.DragUpDownLayout>

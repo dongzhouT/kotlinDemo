@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import com.example.kotlindemo.animator.AnimDemoActivity
+import com.example.kotlindemo.constrainLayout.ConstrainLayoutDemoActivity
 import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drag.DragDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
@@ -93,5 +94,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
     fun onClickDragDemo(view: View) {
         startActivity(Intent(this, DragDemoActivity::class.java))
 
+    }
+
+    fun onClickConstraintLayoutDemo(view: View) {
+        startActivity(Intent(this, ConstrainLayoutDemoActivity::class.java))
     }
 }

@@ -96,5 +96,10 @@
             android:layout_height="wrap_content"
             android:onClick="onClickDragDemo"
             android:text="DragDemo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickConstraintLayoutDemo"
+            android:text="ConstraintLayoutDemo" />
     </LinearLayout>
 </ScrollView>
