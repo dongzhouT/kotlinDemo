@@ -132,3 +132,81 @@ MotionEvent.ACTION_UP
 ...
 父view的 onTouchEvent+ACTION_UP
 ```
+#拖拽API
+## OnDragListener
+	* `view.startDrag(ClipData data, DragShadowBuilder shadowBuilder,Object myLocalState, int flags)`
+	* child.setOnDragListener() fun onDrag(v: View, event: DragEvent)
+```
+    private inner class MyDragListener : OnDragListener {
+        override fun onDrag(v: View, event: DragEvent): Boolean {
+            when (event.action) {
+                DragEvent.ACTION_DRAG_STARTED -> {
+                    if (v === targetView) {
+                        v.visibility = View.INVISIBLE
+                    }
+                }
+                DragEvent.ACTION_DRAG_ENTERED -> {
+                    if (v !== targetView)
+                        sort(v)
+                }
+                DragEvent.ACTION_DRAG_ENDED -> {
+                    if (v === targetView) {
+                        v.visibility = visibility
+                    }
+                }
+            }
+            return true
+
+        }
+    }
+```
+**本质是在原view上绘制一个图层，拖拽的是图层，可以跨进程传递数据，实际view没有动**
+## ViewDragHelper
+	* 初始化 `private val viewDragHelper = ViewDragHelper.create(this, DragCallback())`
+	* 接管父类方法：
+	```
+	override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
+        return viewDragHelper.shouldInterceptTouchEvent(ev)
+    }
+	override fun onTouchEvent(event: MotionEvent): Boolean {
+        viewDragHelper.processTouchEvent(event)
+        return true
+    }
+	```
+	* DragCallback
+	```
+	private inner class DragCallback : ViewDragHelper.Callback() {
+        var capturedLeft = 0f
+        var capturedTop = 0f
+
+        override fun tryCaptureView(child: View, pointerId: Int): Boolean {
+            return true
+        }
+        //钳制水平方向的移动，默认返回0，及水平方向不能移动
+        override fun clampViewPositionHorizontal(child: View, left: Int, dx: Int): Int {
+            return left
+        }
+
+        override fun clampViewPositionVertical(child: View, top: Int, dy: Int): Int {
+            return top
+        }
+
+        override fun onViewCaptured(capturedChild: View, activePointerId: Int) {
+            capturedChild.elevation = elevation + 1
+            capturedLeft = capturedChild.left.toFloat()
+            capturedTop = capturedChild.top.toFloat()
+        }
+
+        override fun onViewPositionChanged(changedView: View, left: Int, top: Int, dx: Int, dy: Int) {
+        }
+
+        override fun onViewReleased(releasedChild: View, xvel: Float, yvel: Float) {
+            dragHelper.settleCapturedViewAt(capturedLeft.toInt(), capturedTop.toInt())
+            postInvalidateOnAnimation()
+        }
+    }
+	```
+**本质是改变的view的left，top，right，bottom**
+
+
+

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.View
 import com.example.kotlindemo.animator.AnimDemoActivity
 import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
+import com.example.kotlindemo.drag.DragDemoActivity
 import com.example.kotlindemo.drawable.DrawableDemoActivity
 import com.example.kotlindemo.drawable.HandleActivity
 import com.example.kotlindemo.handler.HandlerDemoActivity
@@ -87,5 +88,10 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickMultiTouch(view: View) {
         startActivity(Intent(this, MultiTouchDemoActivity::class.java))
+    }
+
+    fun onClickDragDemo(view: View) {
+        startActivity(Intent(this, DragDemoActivity::class.java))
+
     }
 }

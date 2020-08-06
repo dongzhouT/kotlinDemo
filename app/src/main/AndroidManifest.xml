@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".multiTouch.MultiTouchDemoActivity"></activity>
+        <activity android:name=".drag.DragUpDownActivity"></activity>
+        <activity android:name=".drag.DragToCollectActivity" />
+        <activity android:name=".drag.DragHelperActivity" />
+        <activity android:name=".drag.DragListenerActivity" />
+        <activity android:name=".drag.DragDemoActivity" />
+        <activity android:name=".multiTouch.MultiTouchDemoActivity" />
         <activity android:name=".touch.TwoPagerDemoActivity" />
         <activity android:name=".touch.TouchDemoActivity" />
         <activity android:name=".handler.HandlerDemoActivity" />

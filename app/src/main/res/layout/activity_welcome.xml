@@ -91,5 +91,10 @@
             android:layout_height="wrap_content"
             android:onClick="onClickMultiTouch"
             android:text="MultiTouchDemo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickDragDemo"
+            android:text="DragDemo" />
     </LinearLayout>
 </ScrollView>
