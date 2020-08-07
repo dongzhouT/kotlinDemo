@@ -3,6 +3,10 @@ Handler是如何实现线程之间的切换的
 现在有A、B两个线程，在A线程中有创建了handler，然后在B线程中调用handler发送一个message。
 
 通过上面的分析我们可以知道，当在A线程中创建handler的时候，同时创建了`MessageQueue`与`Looper`，`Looper`在A线程中调用`loop`进入一个无限的for循环从`MessageQueue`中取消息，当B线程调用`handler`发送一个message的时候，会通过`enqueueMessage`将message插入到handler对应的`MessageQueue`中，`Looper`发现有`message`插入到`MessageQueue`中，取出message通过`msg.target.dispatchMessage(msg)`,执行相应的逻辑，因为Looper.loop()是在A线程中启动的，所以则回到了A线程，达到了从B线程切换到A线程的目的。
+* HandlerThread
+* IdleHandler
+Idle handles only run if the queue is empty or if the first message
+in the queue (possibly a barrier) is due to be handled in the future.
 # Retrofit
 ```java
  OkHttpCall(RequestFactory requestFactory,Object[] args,okhttp3.Call.Factory callFactory,Converter<ResponseBody, T> responseConverter)
@@ -207,6 +211,118 @@ MotionEvent.ACTION_UP
     }
 	```
 **本质是改变的view的left，top，right，bottom**
+# java多线程和线程安全
+## Thread ExecutorService
+Thread,Runnable 不建议使用，不利于线程管理
+Executor线程池
+```
+ExecutorService service = Executors.newCachedThreadPool();
+public ThreadPoolExecutor(int corePoolSize,
+                              int maximumPoolSize,
+                              long keepAliveTime,
+                              TimeUnit unit,
+                              BlockingQueue<Runnable> workQueue)
+```
+## volatile
+每个线程有自己的内部存储，更新后不会实时通知共享内存，主线程更新数据后，子线程不会实时更新
+* 保证变量的可见性和同步性，对基本数据类型的原子性。降低效率，提高数据安全。
+* `对象`的原子性和同步性，可使用AtomicReference
+* 使用场景，多线程操作同一个数据
+```private volatile int count=0;```
+## synchronized
+本质：保证代码块内资源的互斥访问，即同一时间，由同一个monitor监视的代码，最多只能有一个线程在访问
+```
+Object monitor = new Object();//监视器
+synchronized(monitor){
+    //...
+}
+静态方法加锁，monitor也要使用静态变量
+private static void fun(){
+    synchronized(Single.class){
+        //...
+    }
+}
+```
+## 死锁
+多重锁可能导致死锁，单锁不会出现死锁
+```
+    private void fun1(){
+        synchronized(monitor1){
+            x++;
+            synchronized(monitor2){
+                y++;
+            }
+        }
+    }
+    private void fun2(){
+            synchronized(monitor2){
+                y++;
+                synchronized(monitor1){
+                    x++;
+                }
+            }
+        }
 
+```
+## 乐观锁
+乐观并发控制，读数据不锁，写数据加锁。假设别人不会频繁的读写，性能有优势
+## 悲观锁
+悲观并发控制，读数据就加锁，锁的时间长，读写非常频繁的时候使用，降低性能，提高数据安全
+## ReentrantLock ReentrantReadWriteLock
+可重入锁 ，手动加锁
+应用：ArrayBlockingQueue
+```
+    lock.lock()
+    try{
+        //...
+    }finally{
+        lock.unLock();
+    }
+```
+** 线程安全的本质：多个线程访问共同资源，对该资源的读写发生冲突，导致数据错误 **
+# 单例模式
+## 饿汉
+```
+public class SingleMan{
+    private static SingleMan instance = new SingleMan();
+    private SingleMan(){}
+    public static SingleMan getInstance(){
+        return instance;
+    }
+}
+```
+线程安全
+程序初始化的时候就创建对象，有可能用不到，造成资源浪费。
+## 懒汉
+```
+public class SingleMan{
+    private static SingleMan instance;
+    private SingleMan(){}
+    public static synchronized SingleMan getInstance(){
+        if(instance == null){
+            instance = new SingleMan();
+        }
+        return instance;
+    }
+}
+```
+线程安全，有同步锁，效率低。
 
-
+## 饱汉
+```
+public class SingleMan{
+    private static volatile SingleMan instance;
+    private SingleMan(){}
+    public static SingleMan getInstance(){
+        if(instance == null){
+            synchronized(SingleMan.class){
+                if(instance == null){
+                    instance = new SingleMan();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+双重检查
