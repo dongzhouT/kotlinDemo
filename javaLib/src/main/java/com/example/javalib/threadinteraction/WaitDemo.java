@@ -1,7 +1,9 @@
-package com.example.javalib.thread;
+package com.example.javalib.threadinteraction;
+
+import com.example.javalib.thread.TestDemo;
 
 public class WaitDemo implements TestDemo {
-    private String sharedString;
+    private volatile String sharedString;
     private Object monitor = new Object();
 
     private synchronized void initString() {
@@ -67,16 +69,17 @@ public class WaitDemo implements TestDemo {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+//                yield();//让路
                 initString();
             }
         };
         thread1.start();
         thread2.start();
-        try {
-            thread1.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            thread1.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         System.out.println("haha");
 

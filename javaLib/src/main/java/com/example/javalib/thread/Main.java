@@ -1,5 +1,8 @@
 package com.example.javalib.thread;
 
+import com.example.javalib.threadinteraction.ThreadInteractionDemo;
+import com.example.javalib.threadinteraction.WaitDemo;
+
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
@@ -8,10 +11,10 @@ import java.util.concurrent.Future;
 
 public class Main {
     public static void main(String[] args) {
-//        new WaitDemo().runTest();
+        new WaitDemo().runTest();
 //        new ThreadInteractionDemo().runTest();
 //        callable();
-        new Synchronized1Demo().runTest();
+//        new Synchronized1Demo().runTest();
     }
 
     private static void callable() {

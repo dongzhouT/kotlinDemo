@@ -1,4 +1,5 @@
 # Handler原理 [参考](https://blog.csdn.net/AdobeSolo/article/details/75195394?utm_medium=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase&depth_1-utm_source=distribute.wap_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-2.nonecase)
+* looper循环的从MessageQueue中取message，message的target也就是handler通过dispatchMessage去分发处理消息
 Handler是如何实现线程之间的切换的
 现在有A、B两个线程，在A线程中有创建了handler，然后在B线程中调用handler发送一个message。
 
@@ -7,6 +8,11 @@ Handler是如何实现线程之间的切换的
 * IdleHandler
 Idle handles only run if the queue is empty or if the first message
 in the queue (possibly a barrier) is due to be handled in the future.
+`Message msg = queue.next(); // might block`
+延时msg：存的时候按时间先后顺序插入到messageQueue中，时间靠后的插在链表的后面，在looper取的时候,messageQueue.next()中阻塞线程，直到msg的when小于当前时间，去取出msg
+
+* Message
+Message.obtain() 从池子中取Message，节约资源。最大容量 int MAX_POOL_SIZE = 50
 # Retrofit
 ```java
  OkHttpCall(RequestFactory requestFactory,Object[] args,okhttp3.Call.Factory callFactory,Converter<ResponseBody, T> responseConverter)
@@ -326,3 +332,18 @@ public class SingleMan{
 }
 ```
 双重检查
+# 线程间通信
+## 终止线程
+* `thread.stop()`
+终止线程
+* `thread.interrupt()`
+打断，把线程标记为终止状态，不是强制终止。线程不立即结束，可以在线程中手动判断isInterrupted标记是否终止
+isInterrupted() 判断线程是否需要结束
+Thread.interrupted() 线程内终止并修改终止标记
+如果线程正在sleep(),会抛出InterruptedException异常
+* `Object.wait()` 释放同步锁，将线程加入等待区(挂起),配合notify()使用
+* `Object.notify()/Object.notifyAll()` 通知一个/所有等待区线程重新加入锁竞争
+** wait()和notify()必须放在synchronized代码块中 **
+* `thread.join()` 将子线程插入到当前线程，阻塞当前线程
+* `thread.yield()` 在线程里面调用，让出自己的时间片，暂停当前线程，给和自己同优先级的线程
+* 会引起InterruptedException的方法，Thread.sleep(),Object.wait(),thread.join()
