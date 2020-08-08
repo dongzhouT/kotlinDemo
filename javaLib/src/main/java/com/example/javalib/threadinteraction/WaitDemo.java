@@ -12,9 +12,12 @@ public class WaitDemo implements TestDemo {
     }
 
     private synchronized void printString() {
+        System.out.println("printString start");
         while (sharedString == null) {
             try {
+                System.out.println("waiting:"+sharedString);
                 wait();
+                System.out.println("waiting end:"+sharedString);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -65,7 +68,7 @@ public class WaitDemo implements TestDemo {
             @Override
             public void run() {
                 try {
-                    Thread.sleep(2000);
+                    Thread.sleep(4000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
