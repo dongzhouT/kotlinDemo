@@ -347,3 +347,91 @@ Thread.interrupted() 线程内终止并修改终止标记
 * `thread.join()` 将子线程插入到当前线程，阻塞当前线程
 * `thread.yield()` 在线程里面调用，让出自己的时间片，暂停当前线程，给和自己同优先级的线程
 * 会引起InterruptedException的方法，Thread.sleep(),Object.wait(),thread.join()
+
+# Activity启动流程
+```
+Activity.startActivity(intent)
+Instrumentation.execStartActivity()
+IActivityTaskManager.getService().startActivity()
+//AMS
+public class ActivityManagerService extends IActivityManager.Stub
+        implements Watchdog.Monitor, BatteryStatsImpl.BatteryCallback 
+ActivityManagerService.startActivity()
+//管理Activity
+ActivityTaskManagerService.startActivity()->
+{  
+//ActivityStarter
+return getActivityStartController().obtainStarter(intent, "startActivityAsUser")
+                .setCaller(caller)
+                .setCallingPackage(callingPackage)
+                .setResolvedType(resolvedType)
+                .setResultTo(resultTo)
+                .setResultWho(resultWho)
+                .setRequestCode(requestCode)
+                .setStartFlags(startFlags)
+                .setProfilerInfo(profilerInfo)
+                .setActivityOptions(bOptions)
+                .setMayWait(userId)
+                .execute();
+}
+/**
+ * Controller for interpreting how and then launching an activity.
+ *
+ * This class collects all the logic for determining how an intent and flags should be turned into
+ * an activity and associated task and stack.
+ */
+交给 ActivityStarter
+```
+# RxJava
+被观察值：Observable,Single
+## Single
+```
+ Single.just(2)
+                .delay(1,TimeUnit.SECONDS)
+                .map(object :Function<Int,String>{
+                    override fun apply(t: Int?): String {
+                        return t.toString()
+                    }
+
+                })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object: SingleObserver<String> {
+                    override fun onSuccess(t: String?) {
+                    }
+
+                    override fun onSubscribe(d: Disposable?) {
+                    }
+
+                    override fun onError(e: Throwable?) {
+                    }
+                })
+```
+## Observable
+```
+Observable.interval(0, 1, TimeUnit.SECONDS)
+                .delay(1,TimeUnit.SECONDS)
+                .subscribeOn(Schedulers.newThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(object : Observer<Long?> {
+                    override fun onComplete() {
+                    }
+
+                    override fun onSubscribe(d: Disposable?) {
+                    }
+
+                    override fun onNext(t: Long?) {
+                    }
+
+                    override fun onError(e: Throwable?) {
+                    }
+                })
+```
+关闭订阅，disposable.dispose()
+## 线程切换
+* subscribeOn(Schedulers.io())，本质用的是`ScheduledExecutorService`,
+`final ScheduledExecutorService exec = Executors.newScheduledThreadPool(1, factory);`
+* newThread()新开线程;io()用pool，实现线程复用
+* observeOn(AndroidSchedulers.mainThread()),本质用的是`new Handler(Looper.getMainLooper()),handler.sendMessageDelayed()`
+
+
