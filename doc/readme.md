@@ -451,7 +451,7 @@ Observable.interval(0, 1, TimeUnit.SECONDS)
 * 通过`application.registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback)`绑定Activity生命周期回调
 * AppWatcher.objectWatcher.watch(User(), "") `KeyedWeakReference`
 * GcTrigger.runGc() 实际是调用`Runtime.getRuntime.gc()`触发GC 为什么不用system.gc() System.gc() does not garbage collect every time. Runtime.gc() is more likely to perform a gc.
-* `AndroidHeapDumper.dumpHeap()发送通知->HeapAnalyzerService.runAnalysis(application, heapDumpFile)` 启动一个`HeapAnalyzerService`继承自IntentService，`.hprof`文件
+* `AndroidHeapDumper.dumpHeap()发送通知->HeapAnalyzerService.runAnalysis(application, heapDumpFile)` 启动一个`HeapAnalyzerService`继承自IntentService，加载并分析`.hprof`文件
 # 构建流程
 1. 编译资源 使用aapt2工具对资源进行编译，生成.flat文件
 2. 链接资源 使用aapt2工具将资源整合，生成资源文件和R.java文件
