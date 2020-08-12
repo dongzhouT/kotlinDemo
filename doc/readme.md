@@ -434,4 +434,29 @@ Observable.interval(0, 1, TimeUnit.SECONDS)
 * newThread()新开线程;io()用pool，实现线程复用
 * observeOn(AndroidSchedulers.mainThread()),本质用的是`new Handler(Looper.getMainLooper()),handler.sendMessageDelayed()`
 
+# LeakCanary
+四种引用：强引用，弱引用，软引用，虚引用
+```
+    var leakView = ArrayList<View>()//强引用
+    var weak = WeakReference<User>(User())//弱引用，可以被GC回收
+    var soft = SoftReference<User>(User())//软引用 内存不⾜会被垃圾回收
+    var phantom = PhantomReference<User>(User(), ReferenceQueue())//虚引用  不能通过 get() 获得引⽤对象,会被垃圾回收
+    fun main() {
+        var user = weak.get()
+        var softUser = soft.get()
+        var phan = phantom.get()//return null
+    }
+```
+2.X版本不需要手动调用install
+* 通过`application.registerActivityLifecycleCallbacks(ActivityLifecycleCallbacks callback)`绑定Activity生命周期回调
+* AppWatcher.objectWatcher.watch(User(), "") `KeyedWeakReference`
+* GcTrigger.runGc() 实际是调用`Runtime.getRuntime.gc()`触发GC 为什么不用system.gc() System.gc() does not garbage collect every time. Runtime.gc() is more likely to perform a gc.
+* `AndroidHeapDumper.dumpHeap()发送通知->HeapAnalyzerService.runAnalysis(application, heapDumpFile)` 启动一个`HeapAnalyzerService`继承自IntentService，`.hprof`文件
+# 构建流程
+1. 编译资源 使用aapt2工具对资源进行编译，生成.flat文件
+2. 链接资源 使用aapt2工具将资源整合，生成资源文件和R.java文件
+3. 编译Java文件 使用 javac 工具编译java文件，->.class 字节码文件
+4. dex编译 使用d8工具编译 class 代码，->dex文件
+5. 合并dex文件和资源文件，使用zip命令合并资源文件和代码文件，->还未签名的apk文件
+6. 签名 使用apksigner工具对apk签名 ->已签名的apk文件
 
