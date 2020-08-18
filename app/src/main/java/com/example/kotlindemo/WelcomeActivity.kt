@@ -4,7 +4,10 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.LifecycleObserver
+import com.example.kotlindemo.activity.FirstActivity
 import com.example.kotlindemo.animator.AnimDemoActivity
+import com.example.kotlindemo.anr.ANRDemoActivity
 import com.example.kotlindemo.constrainLayout.ConstrainLayoutDemoActivity
 import com.example.kotlindemo.customLayout.TagLayoutDemoActivity
 import com.example.kotlindemo.drag.DragDemoActivity
@@ -27,6 +30,9 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
         btn1.setOnClickListener(this)
+        lifecycle.addObserver(object : LifecycleObserver {
+
+        })
 //        btn2.setOnClickListener(this)
 
     }
@@ -98,5 +104,13 @@ class WelcomeActivity : AppCompatActivity(), View.OnClickListener {
 
     fun onClickConstraintLayoutDemo(view: View) {
         startActivity(Intent(this, ConstrainLayoutDemoActivity::class.java))
+    }
+
+    fun onClickANRDemo(view: View) {
+        startActivity(Intent(this, ANRDemoActivity::class.java))
+    }
+
+    fun onClickActivityA(view: View) {
+        startActivity(Intent(this, FirstActivity::class.java))
     }
 }

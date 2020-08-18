@@ -40,11 +40,11 @@ proceed（）intercept
 * CacheInterceptor 缓存命中
 * ConnectInterceptor 建立TCP或TLS连接，并创建对应的HttpCodec对象（HTTP1还是HTTP2）。
 * findConnection 最多有五次建立连接，
- 1.直接使用已经建立的可用的(符合条件的)连接
- 2.从连接池中找可用连接，不使用连接合并(routes) connection coalescing，不使用多路复用， Attempt to get a connection from the pool
- 3.从连接池中找可用连接，使用连接合并(routes)，使用多路复用 This could match due to connection coalescing.
- 4.建立连接 Do TCP + TLS handshakes
- 5.从连接池中找可用连接，[只拿]多路复用，加了同步锁，防止创建多个相同连接，造成资源浪费
+1. 直接使用已经建立的可用的(符合条件的)连接
+2. 从连接池中找可用连接，不使用连接合并(routes) connection coalescing，不使用多路复用， Attempt to get a connection from the pool
+3. 从连接池中找可用连接，使用连接合并(routes)，使用多路复用 This could match due to connection coalescing.
+4. 建立连接 Do TCP + TLS handshakes
+5. 从连接池中找可用连接，[只拿]多路复用，加了同步锁，防止创建多个相同连接，造成资源浪费
 CallServerInterceptor 去请求与相应的I/O操作，发请求读响应
 
 # view绘制流程

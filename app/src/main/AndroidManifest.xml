@@ -11,7 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".constrainLayout.ConstrainLayoutDemoActivity"></activity>
+        <activity android:name=".activity.SecondActivity"></activity>
+        <activity android:name=".activity.FirstActivity"
+            android:launchMode="singleTop"
+            />
+        <activity android:name=".anr.ANRDemoActivity" />
+        <activity android:name=".constrainLayout.ConstrainLayoutDemoActivity" />
         <activity android:name=".drag.DragUpDownActivity" />
         <activity android:name=".drag.DragToCollectActivity" />
         <activity android:name=".drag.DragHelperActivity" />

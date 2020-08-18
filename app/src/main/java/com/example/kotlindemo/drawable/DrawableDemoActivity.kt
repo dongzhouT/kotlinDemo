@@ -44,6 +44,7 @@ class DrawableDemoActivity : Activity() {
         met.postDelayed(3000) {
             met.useFloatingLabel = false
         }
+        editText.viewTreeObserver.addOnScrollChangedListener {  }
     }
 }
 

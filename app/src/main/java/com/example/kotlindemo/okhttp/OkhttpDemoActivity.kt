@@ -49,6 +49,10 @@ class OkhttpDemoActivity : AppCompatActivity() {
                 .addNetworkInterceptor(StethoInterceptor())
                 .build()
         val request = Request.Builder().url(url).build()
+        thread {
+            client.newCall(request).execute()
+        }
+
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 

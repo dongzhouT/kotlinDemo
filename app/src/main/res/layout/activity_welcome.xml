@@ -101,5 +101,15 @@
             android:layout_height="wrap_content"
             android:onClick="onClickConstraintLayoutDemo"
             android:text="ConstraintLayoutDemo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickANRDemo"
+            android:text="ANR demo" />
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="onClickActivityA"
+            android:text="ActivityChange" />
     </LinearLayout>
 </ScrollView>

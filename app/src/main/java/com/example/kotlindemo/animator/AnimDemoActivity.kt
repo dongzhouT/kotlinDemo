@@ -36,7 +36,7 @@ class AnimDemoActivity : AppCompatActivity() {
         bitmap.toDrawable(resources)
         val drawable=ColorDrawable()
         drawable.toBitmap()
-//        view.animate().translationX(100.dp).withLayer()
+        view.animate().translationX(100.dp).withLayer()
 
 //        TypeEvaluator()
 //        ObjectAnimator.ofObject(view, TypeEvaluator(),??)
