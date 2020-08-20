@@ -3,16 +3,23 @@ package com.example.kotlindemo.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import com.example.kotlindemo.R
 import com.example.kotlindemo.log
 
 class SecondActivity : AppCompatActivity() {
-    private val tag="LifeCycle B:";
+    private val tag = "LifeCycle B:";
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
         showLog("onCreate")
     }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        showLog("onSaveInstanceState")
+    }
+
     override fun onStart() {
         super.onStart()
         showLog("onStart")
@@ -42,7 +49,8 @@ class SecondActivity : AppCompatActivity() {
         super.onDestroy()
         showLog("onDestroy")
     }
-    fun showLog(msg:String){
-        log(tag+msg)
+
+    fun showLog(msg: String) {
+        log(tag + msg)
     }
 }

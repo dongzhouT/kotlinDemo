@@ -3,9 +3,13 @@ package com.example.kotlindemo.activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View
+import android.view.ViewTreeObserver
 import com.example.kotlindemo.R
 import com.example.kotlindemo.log
+import kotlinx.android.synthetic.main.activity_drawable_demo.*
+import kotlinx.android.synthetic.main.activity_first.*
 
 /**
  * Activity切换生命周期回调：
@@ -31,6 +35,23 @@ class FirstActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_first)
         showLog("onCreate")
+        println("111 width=${btn.width},height=${btn.height}")
+        btn.viewTreeObserver.addOnGlobalLayoutListener(onLayoutListener)
+    }
+
+    val onLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
+        override fun onGlobalLayout() {
+            println("222 width=${btn.width},height=${btn.height}")
+            btn.viewTreeObserver.removeOnGlobalLayoutListener(this)
+        }
+
+
+
+    }
+
+    override fun onSaveInstanceState(outState: Bundle, outPersistentState: PersistableBundle) {
+        super.onSaveInstanceState(outState, outPersistentState)
+        showLog("onSaveInstanceState")
     }
 
     override fun onRestart() {
@@ -73,7 +94,7 @@ class FirstActivity : AppCompatActivity() {
     }
 
     fun startB(view: View) {
-        startActivity(Intent(this, FirstActivity::class.java))
+        startActivity(Intent(this, SecondActivity::class.java))
     }
 
 }

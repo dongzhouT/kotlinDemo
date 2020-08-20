@@ -4,6 +4,7 @@ import android.app.Activity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.view.View
 import android.view.ViewTreeObserver
 import androidx.core.view.postDelayed
 import com.example.kotlindemo.R
@@ -44,8 +45,9 @@ class DrawableDemoActivity : Activity() {
         met.postDelayed(3000) {
             met.useFloatingLabel = false
         }
-        editText.viewTreeObserver.addOnScrollChangedListener {  }
+
     }
+
 }
 
 fun main() {
