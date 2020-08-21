@@ -20,6 +20,7 @@
         <EditText
             android:id="@+id/editText"
             android:layout_width="match_parent"
+            android:text="112233"
             android:layout_height="wrap_content" />
     </FrameLayout>
 

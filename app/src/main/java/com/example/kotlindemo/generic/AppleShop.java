@@ -3,9 +3,13 @@ package com.example.kotlindemo.generic;
 import com.example.kotlindemo.generic.Fruit.Fruit;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 泛型
+ *
+ * @param <T>
+ */
 public class AppleShop<T extends Fruit> implements Shop<T> {
     @Override
     public T buy() {
@@ -17,6 +21,7 @@ public class AppleShop<T extends Fruit> implements Shop<T> {
 
     }
 
+    //泛型方法
     @Override
     public <E> E trade(E item, int i) {
         return null;
@@ -29,5 +34,9 @@ public class AppleShop<T extends Fruit> implements Shop<T> {
 
     public <P> void merge(P item, List<P> list) {
         list.add(item);
+    }
+
+    public <k> k find(String item) {
+        return null;
     }
 }

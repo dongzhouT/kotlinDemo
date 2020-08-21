@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
 import android.view.ViewTreeObserver
+import com.bumptech.glide.Glide
 import com.example.kotlindemo.R
 import com.example.kotlindemo.log
 import kotlinx.android.synthetic.main.activity_drawable_demo.*
@@ -37,6 +38,8 @@ class FirstActivity : AppCompatActivity() {
         showLog("onCreate")
         println("111 width=${btn.width},height=${btn.height}")
         btn.viewTreeObserver.addOnGlobalLayoutListener(onLayoutListener)
+        var imgUrl = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1440378077,2357629830&fm=26&gp=0.jpg";
+        Glide.with(this).load(imgUrl).into(imageview)
     }
 
     val onLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -44,7 +47,6 @@ class FirstActivity : AppCompatActivity() {
             println("222 width=${btn.width},height=${btn.height}")
             btn.viewTreeObserver.removeOnGlobalLayoutListener(this)
         }
-
 
 
     }
