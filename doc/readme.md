@@ -459,4 +459,21 @@ Observable.interval(0, 1, TimeUnit.SECONDS)
 4. dex编译 使用d8工具编译 class 代码，->dex文件
 5. 合并dex文件和资源文件，使用zip命令合并资源文件和代码文件，->还未签名的apk文件
 6. 签名 使用apksigner工具对apk签名 ->已签名的apk文件
+```
+https://www.jianshu.com/p/a2c644f15790
+图中的矩形表示用到或者生成的文件，椭圆表示工具。
+1\. 通过aapt打包res资源文件，生成R.java、resources.arsc和res文件
+2\. 处理.aidl文件，生成对应的Java接口文件
+3\. 通过Java Compiler编译R.java、Java接口文件、Java源文件，生成.class文件
+4\. 通过dex命令，将.class文件和第三方库中的.class文件处理生成classes.dex
+5\. 通过apkbuilder工具，将aapt生成的resources.arsc和res文件、assets文件和classes.dex一起打包生成apk
+6\. 通过Jarsigner工具，对上面的apk进行debug或release签名
+7\. 通过zipalign工具，将签名后的apk进行对齐处理。
+这样就得到了一个可以安装运行的Android程序。
+```
+# classLoader
+## 双亲委派模型
+如果一个类加载器收到了类加载的请求，它首先不会自己去尝试加载这个类，而是把这个请求委派给父类加载器去完成，
+每一个层次的类加载器都是如此，因此所有的加载请求最终都应该传送到顶层的启动类加载器中，
+只有当父加载器反馈自己无法完成这个加载请求（它的搜索范围中没有找到所需的类）时，子加载器才会尝试自己去加载。
 

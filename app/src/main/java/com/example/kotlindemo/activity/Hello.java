@@ -112,6 +112,18 @@ import java.util.List;
  */
 public class Hello {
     List<String> a = new ArrayList<>();
+    String ss="abc";
+    int k=0;
+    public void fun(String aa){
+        Thread thread=new Thread(){
+            @Override
+            public void run() {
+                k++;
+                System.out.println(aa);
+            }
+        };
+
+    }
 
     public void addSum() {
         int kkk = 0;

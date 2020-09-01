@@ -20,7 +20,9 @@ class HandlerDemoActivity : AppCompatActivity() {
         setContentView(R.layout.activity_handler_demo)
         var mHandler: Handler
         thread {
+            println("step 0")
             Looper.prepare()
+            println("step 1")
             mHandler = object : Handler() {
                 override fun handleMessage(msg: Message) {
                     println("===currentThread=== handle:${msg.what}")
@@ -29,12 +31,15 @@ class HandlerDemoActivity : AppCompatActivity() {
 
             mHandler.sendEmptyMessage(1)
             mHandler.sendEmptyMessageDelayed(2, 3000)
+//            mHandler.looper.queue.postSyncBarrier() 同步屏障
             Looper.myQueue().addIdleHandler {
                 //在消息队列空闲的时候做一些事情，返回值false 只调用一次，true 会调用无限次
                 println("===currentThread=== idle:${Thread.currentThread().name}")
                 true
             }
             Looper.loop()
+            //loop()后面的代码不会执行，因为他是个死循环，阻塞了当前线程
+            println("step 2")
 
             mHandler.post {
                 println("===currentThread=== post1:${Thread.currentThread().name}")

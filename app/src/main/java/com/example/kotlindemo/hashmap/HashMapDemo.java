@@ -4,11 +4,14 @@ import com.blankj.utilcode.util.GsonUtils;
 import com.example.kotlindemo.generic.AppleShop;
 import com.google.gson.Gson;
 
+import java.util.ArrayDeque;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 
 public class HashMapDemo {
@@ -43,5 +46,13 @@ public class HashMapDemo {
         dataSet.add(1);
         dataSet.add(2);
         dataSet.add(1);
+        LinkedList<String> linkedList=new LinkedList();
+        linkedList.add("a");
+        linkedList.push("b");
+        linkedList.peek();
+        linkedList.poll();
+        linkedList.removeLast();
+        Queue<String> queue=new ArrayDeque<>();
+
     }
 }
