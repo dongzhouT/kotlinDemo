@@ -1,5 +1,8 @@
 package com.example.kotlindemo.hashmap;
 
+import android.os.Binder;
+import android.util.ArrayMap;
+
 import com.blankj.utilcode.util.GsonUtils;
 import com.example.kotlindemo.generic.AppleShop;
 import com.google.gson.Gson;
@@ -53,6 +56,9 @@ public class HashMapDemo {
         linkedList.poll();
         linkedList.removeLast();
         Queue<String> queue=new ArrayDeque<>();
+        ArrayMap<String,String> arrayMap=new ArrayMap<>();
+        arrayMap.put("1","2");
+        arrayMap.get("1");
 
     }
 }

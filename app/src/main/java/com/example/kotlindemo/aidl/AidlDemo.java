@@ -13,8 +13,13 @@ public class AidlDemo implements IMyAidlInterface {
 
     @Override
     public IBinder asBinder() {
-        List<String> data=new ArrayList<>();
-        data.add(2,"2");
+        List<String> data = new ArrayList<>();
+        data.add(2, "2");
+        try {
+            new Default().basicTypes(1, 1, true, 0, 0, "");
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
         return null;
     }
 }

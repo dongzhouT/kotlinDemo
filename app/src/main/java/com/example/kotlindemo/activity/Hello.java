@@ -1,5 +1,7 @@
 package com.example.kotlindemo.activity;
 
+import org.jetbrains.annotations.TestOnly;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -115,9 +117,11 @@ public class Hello {
     String ss="abc";
     int k=0;
     public void fun(String aa){
+        int i=0;
         Thread thread=new Thread(){
             @Override
             public void run() {
+                //i++;
                 k++;
                 System.out.println(aa);
             }
@@ -134,5 +138,10 @@ public class Hello {
     public static void main(String[] args) {
         Hello hello = new Hello();
         hello.addSum();
+    }
+    class Parent{
+        {
+            System.out.println("parent");
+        }
     }
 }
