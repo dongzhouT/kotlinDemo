@@ -8,6 +8,7 @@ package com.example.javalib.test;
  * TestTwo()
  * TestOne
  * TestOne()
+ * 父类静态代码块——>子类静态代码块——>父类代码块——>父类构造方法——>子类代码块——>子类构造方法
  */
 public class TestOne extends TestTwo {
     public TestOne() {
@@ -23,6 +24,7 @@ public class TestOne extends TestTwo {
     }
 
     public static void main(String[] args) {
+        new TestOne();
         new TestOne();
     }
 

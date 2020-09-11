@@ -1,6 +1,10 @@
 package com.example.kotlindemo.activity
 
+import android.app.Activity
+import android.app.Application
+import android.content.ComponentCallbacks
 import android.content.Intent
+import android.content.res.Configuration
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -41,7 +45,9 @@ class FirstActivity : AppCompatActivity() {
         btn.viewTreeObserver.addOnGlobalLayoutListener(onLayoutListener)
         var imgUrl = "https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1440378077,2357629830&fm=26&gp=0.jpg";
         Glide.with(this).load(imgUrl).into(imageview)
-        Toast.makeText(this,"hahahaha",Toast.LENGTH_LONG).show()
+        Toast.makeText(this, "hahahaha", Toast.LENGTH_LONG).show()
+        //启动一个前台服务，用于进程保活
+//        startForegroundService()
     }
 
     val onLayoutListener = object : ViewTreeObserver.OnGlobalLayoutListener {
@@ -49,7 +55,40 @@ class FirstActivity : AppCompatActivity() {
             println("222 width=${btn.width},height=${btn.height}")
             btn.viewTreeObserver.removeOnGlobalLayoutListener(this)
         }
+    }
+    var sNoncompatDensity: Float = 0f
+    var sNoncompatScaledDensity: Float = 0f
 
+    //https://mp.weixin.qq.com/s/d9QCoBP6kV9VSWvVldVVwA
+    //头条屏幕适配方案
+    fun setCustomDensity(activity: Activity, application: Application) {
+        val appDisplayMetrics = application.resources.displayMetrics
+        if (sNoncompatDensity == 0f) {
+            sNoncompatDensity = appDisplayMetrics.density
+            sNoncompatScaledDensity = appDisplayMetrics.scaledDensity
+            application.registerComponentCallbacks(object : ComponentCallbacks {
+                override fun onLowMemory() {
+                }
+
+                override fun onConfigurationChanged(newConfig: Configuration) {
+                    if (newConfig != null && newConfig.fontScale > 0) {
+                        sNoncompatScaledDensity = application.resources.displayMetrics.scaledDensity
+                    }
+                }
+
+            })
+
+        }
+        val targetDensity: Float = (appDisplayMetrics.widthPixels / 360).toFloat()
+        val targetScaledDensity: Float = targetDensity * (sNoncompatScaledDensity / sNoncompatDensity)
+        val targetDensityDpi: Int = (160 * targetDensity).toInt()
+        appDisplayMetrics.density = targetDensity
+        appDisplayMetrics.scaledDensity = targetScaledDensity
+        appDisplayMetrics.densityDpi = targetDensityDpi
+        val activityDisplayMetrics = activity.resources.displayMetrics
+        activityDisplayMetrics.density = targetDensity
+        activityDisplayMetrics.scaledDensity = targetScaledDensity
+        activityDisplayMetrics.densityDpi = targetDensityDpi
 
     }
 
